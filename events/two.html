@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RRY is coding</title>
+</head>
+<body>
+    <h1>Coding with rry</h1>
+    <button id="stop">STOP</button>
+</body>
+<script>
+    const sayRishabh = ()=> {
+      console.log("Rishabh")
+    }
+
+    const changeText = function(){
+      document.querySelector('h1').innerHTML = "The Best In The World"
+    }
+
+    const changeMe =  setTimeout(changeText,2000)
+    document.querySelector("#stop").addEventListener("click",function(e){
+        clearTimeout(changeMe)
+        console.log("CLICKED")
+    })
+</script>
+</html>
