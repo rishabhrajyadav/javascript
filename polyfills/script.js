@@ -85,8 +85,57 @@ Function.prototype.myBind = function(context = {} , ...args){
     }
 }
 
-
-
 let func = purchaseCar.myBind(car1 , "$")
-console.log(func("125000"));
+//console.log(func("125000"));
+
+//Polyfills of once() and memoize()
+
+function once(fn,context){
+    let ran;
+
+    return function(){
+      if(fn){
+        ran = fn.apply(context || this , arguments)
+        fn = null
+      }
+      return ran;
+    }
+}
+
+let hello = once((a,b) => console.log("hello",a,b))
+
+hello(1,2);
+hello(1,2);
+hello(1,2);
+
+
+function myMemoize(fn,context){
+  let res ={}
+
+  return function(...args){
+    let argsString = JSON.stringify(args);
+    if(!res[argsString]){
+        res[argsString] = fn.call(context || this , ...args);
+    }
+    return res[argsString];
+  }
+}
+
+const clumsySquare = function(a,b){
+   for(let i = 0; i < 100000000 ;i++){}
+    return a + b;
+}
+
+
+/* const memoizeClum = myMemoize(clumsySquare);
+console.time("first call");
+console.log(memoizeClum(9567 , 9234));
+console.timeEnd("first call");
+
+console.time("Second call");
+console.log(memoizeClum(9567 , 9234));
+console.timeEnd("Second call"); */
+
+
+
 
