@@ -137,5 +137,14 @@ console.log(memoizeClum(9567 , 9234));
 console.timeEnd("Second call"); */
 
 
-
+//Polyfills of debounce and throttling
+function myDebounce(fn,delay){
+    let timerId;
+    return function(...args){
+        clearTimeout(timerId);
+        timerId = setTimeout(() => {
+            fn(...args);
+        },delay)
+    }
+}
 
