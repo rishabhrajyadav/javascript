@@ -41,3 +41,52 @@ let val = arr.myReduce((acc,curVal) => {
 } , 0)
 
 console.log(val);
+
+//Polyfill for call() , apply() , bind()
+let car1 = {
+  color : "Purple",
+  company : "laborghini"
+}
+
+function purchaseCar(currency,price){
+    console.log(`I have purchased ${this.color} - ${this.company} at ${currency}${price}`);
+}
+
+Function.prototype.myCall = function(context = {} , ...args){
+    if(typeof this !== "function"){
+        throw new Error("Not a Function");
+    }
+
+    context.fn = this;
+    context.fn(...args);
+}
+
+Function.prototype.myApply = function(context = {} , args = []){
+    if(typeof this !== "function"){
+        throw new Error("Not a Function");
+    }
+
+    if(!Array.isArray(args)){
+        throw new Error("args called is a non-array params")
+    }
+
+    context.fn = this;
+    context.fn(...args);
+}
+
+Function.prototype.myBind = function(context = {} , ...args){
+    if(typeof this !== "function"){
+        throw new Error("Not a Function");
+    }
+    
+    context.fn = this;
+    return function(...newArgs){
+        return context.fn(...args,...newArgs);
+    }
+}
+
+
+
+let func = purchaseCar.myBind(car1 , "$")
+console.log(func("125000"));
+
