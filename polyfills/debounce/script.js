@@ -25,8 +25,8 @@ let debounced = myDebounce(() => {
 btn.addEventListener("click",() => {
  pressedCount++;   
  pressed.textContent = pressedCount;
- const now = new Date().getTime();
- const seconds = (now - start) /1000;
+ /* const now = new Date().getTime();
+ const seconds = (now - start) /1000; */
 
  debounced();
 })

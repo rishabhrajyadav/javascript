@@ -92,11 +92,11 @@ let func = purchaseCar.myBind(car1 , "$")
 
 function once(fn,context){
     let ran;
-
     return function(){
       if(fn){
-        ran = fn.apply(context || this , arguments)
-        fn = null
+        const bindFn = fn.bind(context || this)
+        ran = bindFn(...arguments);
+        fn = null;
       }
       return ran;
     }
@@ -127,24 +127,25 @@ const clumsySquare = function(a,b){
 }
 
 
-/* const memoizeClum = myMemoize(clumsySquare);
+const memoizeClum = myMemoize(clumsySquare);
 console.time("first call");
 console.log(memoizeClum(9567 , 9234));
 console.timeEnd("first call");
 
 console.time("Second call");
 console.log(memoizeClum(9567 , 9234));
-console.timeEnd("Second call"); */
+console.timeEnd("Second call");
 
 
 //Polyfills of debounce and throttling
 function myDebounce(fn,delay){
     let timerId;
     return function(...args){
-        clearTimeout(timerId);
+        if(timerId) clearTimeout(timerId);
         timerId = setTimeout(() => {
             fn(...args);
         },delay)
     }
 }
+
 

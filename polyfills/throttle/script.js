@@ -27,9 +27,9 @@ let throttled = myThrottle(() => {
 btn.addEventListener("click",() => {
  pressedCount++;   
  pressed.textContent = pressedCount;
- const now = new Date().getTime();
+ /* const now = new Date().getTime();
  const seconds = (now - start) /1000;
- console.log(seconds.toFixed());
+ console.log(seconds.toFixed()); */
 
  throttled();
 })
