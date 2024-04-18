@@ -6,6 +6,7 @@ const display = document.getElementById("display")
 let elepasedTime = 0;
 let startTime;
 let intervalId;
+let stopTime;
 
 function displayTime(time) {
     const minutes = Math.floor(time / 60000);
@@ -40,6 +41,7 @@ stopBtn.addEventListener("click", () => {
 resetBtn.addEventListener("click", (e) => {
     clearInterval(intervalId);
     intervalId = 0;
+    startTime = 0;
     elepasedTime = 0;
     displayTime(elepasedTime);
 } )
