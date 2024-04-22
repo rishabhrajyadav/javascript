@@ -31,4 +31,21 @@ const generateHash = (str) => {
     console.log(str);
 }
 
-console.log(generateHash("rishabh raj yadav is coding "));
+//console.log(generateHash("rishabh raj yadav is coding "));
+
+//Count Occurences of Character
+const countChar = (str , char) => {
+    let charr = char.toUpperCase();
+    let strr = str.trim().toUpperCase();
+    totalCOunt = strr.split("").reduce((acc,curr) => {
+      if(charr === curr){
+        acc++;;
+      }
+      return acc;
+    },0)
+
+    return totalCOunt;
+}
+
+console.log(countChar("RIshabhRajYadav" , "a"));
+
