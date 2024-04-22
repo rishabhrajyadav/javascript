@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #414141;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainDiv">
+        <p id="clock">
+            00:00:00S
+        </p>
+    </div>
+</body>
+<script>
+    const clockBlock = document.getElementById("clock");
+    const showTime = () => {
+        const time = new Date().toLocaleTimeString();
+        clockBlock.innerText = time;
+        /* let hours = time.getHours();
+        let minutes = time.getMinutes();
+        let seconds = time.getSeconds();
+        clockBlock.innerHTML = `${hours}:${minutes}:${seconds}` */
+    }
+
+    setInterval(showTime, 100);
+</script>
+</html>

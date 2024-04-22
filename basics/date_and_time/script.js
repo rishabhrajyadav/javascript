@@ -21,3 +21,15 @@ const getDaysDifference = (d1,d2) => {
 const date2 = new Date("2024-04-29");
 const date3 = new Date("2024-05-29");
 console.log(getDaysDifference(date2,date3));
+
+//3
+const myCallBack = () => {
+    console.log("rry1.000 is coding");
+}
+
+const intervalId = setInterval(myCallBack , 2000);
+const oneMinute = 
+setTimeout(() => {
+  clearInterval(intervalId);
+} , 10000)
+

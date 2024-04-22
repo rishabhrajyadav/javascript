@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        background-color: #414141;
+        color: aliceblue;
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 id="showTime">0</h3>
+        <button id="start">start</button>
+        <button id="stop">stop</button>
+        <button id="reset">reset</button>
+        <button id="getTime">getTime</button>
+        <button id="clearTime">clearTime</button>
+        <div id="timestamps"></div>
+    </div>
+</body>
+ <script>
+    const startBtn = document.getElementById("start");
+    const stopBtn = document.getElementById("stop");
+    const resetBtn = document.getElementById("reset");
+    const getTimeBtn = document.getElementById("getTime");
+    const clearTimeBtn = document.getElementById("clearTime");
+    const showTime = document.getElementById("showTime");
+    const timestamps = document.getElementById("timestamps");
+
+    let intervalId = 0;
+    let count = 0;
+    let elapsedTime;
+    
+    startBtn.addEventListener("click",()=>{
+       if(!intervalId){
+        intervalId = setInterval(()=>{
+          count++  
+          showTime.textContent = `${count}`
+        },1000);
+       }
+        
+    })
+
+    stopBtn.addEventListener("click",()=>{
+        clearInterval(intervalId);
+        intervalId = 0;
+    })
+
+    resetBtn.addEventListener("click",()=>{
+        clearInterval(intervalId);
+        showTime.textContent = "0"
+        intervalId = 0;
+        count = 0;
+    })
+
+    getTimeBtn.addEventListener("click",() => {
+        const p = document.createElement('p');
+        let text = showTime.textContent; 
+        p.innerHTML = `The Stop Time is ${text}`
+        timestamps.appendChild(p); 
+    })
+
+    clearTimeBtn.addEventListener("click",()=>{
+        timestamps.innerHTML = null
+    })
+
+ </script>
+</html>
