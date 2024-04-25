@@ -39,7 +39,7 @@ const countChar = (str , char) => {
     let strr = str.trim().toUpperCase();
     totalCOunt = strr.split("").reduce((acc,curr) => {
       if(charr === curr){
-        acc++;;
+        acc++;
       }
       return acc;
     },0)
@@ -47,5 +47,71 @@ const countChar = (str , char) => {
     return totalCOunt;
 }
 
-console.log(countChar("RIshabhRajYadav" , "a"));
+//console.log(countChar("RIshabhRajYadav" , "a"));
 
+
+//Sort an array
+const sortAscending = (arr) => {
+  return arr.sort((a,b) => a-b)
+}
+
+//console.log(sortAscending([5 ,3, 10, 8]));
+
+//isPallindrome
+const isPallindrome = (str) => {
+  str = str.trim().toLowerCase().replace(/\W/g,"");
+  let r_str = str.split("").reverse().join("")
+   return str === r_str ? true : false;
+} 
+
+//Maximum
+const findMax = (arr) => {
+  console.log(arr);
+  console.log(...arr);
+  return Math.max(...arr)
+} 
+
+//console.log(findMax([1,90,32,78]))
+
+//factorial
+
+const factorial = (n) => {
+  let num = 1;
+  if(n == 0){ 
+    return 1;
+  };
+
+  if(n < 0) throw new Error("Not a Positive number")
+
+  for(let i = n; i > 0 ; i--){
+    num *= i;
+  }
+
+  return num;
+}
+
+//console.log(factorial(5));
+
+//calculateAverage
+const calculateAverage = (arr) => {
+  let value = arr.reduce((acc,currVal) => {
+     return acc + currVal;
+  }, 0)
+
+  return Math.floor(value / arr.length);
+}
+
+//console.log(calculateAverage([1,90,32,78]));
+
+const arrayAreEqual = (arr1,arr2) => {
+  if(arr1.length !== arr2.length) return false;
+  
+  for(let i = 0; i < arr1.length; i++){
+    if(arr1[i] != arr2[i]){
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(arrayAreEqual([1,2,3],[1,2,3]));
