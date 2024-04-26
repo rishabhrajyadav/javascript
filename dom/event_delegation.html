@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #414141;
+            color: aliceblue;
+            text-align: center;
+            align-items: center;
+            font-size: 30px;     
+        }
+
+        ul {
+            list-style-type: none;
+
+         }
+
+         li{
+            cursor: pointer;
+         }
+        
+    </style>
+</head>
+<body>
+    <p>which programming language you like the most</p>
+    <br/>
+    <ul id ="myList">
+        <li>🎶 Javascript🎶</li>
+        <li>✨ Python ✨</li>
+        <li>🎠 Solidity 🎠</li>
+        <li>🎀 Rust 🎀</li>
+    </ul>
+    <p id="listVal"></p>
+</body>
+<script>
+   document.getElementById("myList").addEventListener("click" ,(event) => {
+      console.log(event.target);
+      document.getElementById("listVal").innerHTML = `The Favourite Language is ${event.target.textContent}`
+   })
+</script>
+</html>
