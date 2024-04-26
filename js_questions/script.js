@@ -339,4 +339,16 @@ const numberRangeRecursive1 = (a,b,arr = []) => {
     return arr;
 }
 
-console.log(numberRangeRecursive1(0,4));
+//console.log(numberRangeRecursive1(0,4));
+
+const simplePasswordValidator = (str) => {
+  let lCount = 0;
+  let uCount = 0;
+  let nCOunt = 0;
+  str = str.trim().split("");
+  console.log(str);
+  
+
+}
+
+console.log(simplePasswordValidator("raj1"));
