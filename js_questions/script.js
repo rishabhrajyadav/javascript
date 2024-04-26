@@ -329,4 +329,14 @@ const numberRangeRecursive = (a,b) => {
   }
   return [...arr, ...numberRangeRecursive(a,b)]
 }
-console.log(numberRangeRecursive(0,10));
+//console.log(numberRangeRecursive(0,10));
+
+const numberRangeRecursive1 = (a,b,arr = []) => {
+  if(a <= b){
+    arr.push(a);
+    return numberRangeRecursive1(a+1,b,arr)
+  }
+    return arr;
+}
+
+console.log(numberRangeRecursive1(0,4));

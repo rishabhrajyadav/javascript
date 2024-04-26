@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #414141;
+            color: aliceblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        #outer {
+            height : 500px;
+            width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: pink;
+
+        }
+        #middle {
+            height : 300px;
+            width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: blue;
+        }
+        #middle {
+            height : 300px;
+            width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: blue;
+        }
+
+        #inner {
+            height : 200px;
+            width: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        Outer
+        <div id="middle">
+           Middle
+           <div id="inner">
+             Inner
+           </div>
+        </div>
+    </div>
+</body>
+<script>
+    const callOuter = (event) => {
+        console.table([
+            {
+                Description : "This is an Outer DIv",
+                Target : event.target,
+                CurrentTarget : event.currentTarget
+            }
+        ])
+    }
+
+    const callMiddle = (event) => {
+        console.table([
+            {
+                Description : "This is an Middle DIv",
+                Target : event.target,
+                CurrentTarget : event.currentTarget
+            }
+        ])
+    }
+
+    const callInner = (event) => {
+        console.table([
+            {
+                Description : "This is an Inner DIv",
+                Target : event.target,
+                CurrentTarget : event.currentTarget
+            }
+        ])
+        event.stopPropagation();
+    }
+    
+
+    document.getElementById("outer").addEventListener("click",callOuter)
+    document.getElementById("middle").addEventListener("click",callMiddle)
+    document.getElementById("inner").addEventListener("click",callInner)
+</script>
+</html>
