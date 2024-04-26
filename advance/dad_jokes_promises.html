@@ -64,6 +64,7 @@
         const res = await response.json();
         apiBody.innerHTML = res.joke;
     } catch (error) {
+        apiBody.innerHTML = error;
         throw new Error(error);
     }   
   }
