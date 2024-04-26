@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #414141;
+            color: aliceblue;
+            text-align: center;
+            align-items: center;
+            font-size: 30px;     
+        }
+
+        button{
+            padding: 10px;
+            font-size: 25px;
+            color: aliceblue;
+            background-color: darkgreen;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover{
+            color: darkgreen;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Welcome to Dad Jokes</h1>
+        <section id="api_body"></section>
+        <button id="fetchJoke">Get Another Joke</button>
+    </div>
+</body>
+<script>
+  const apiBody = document.getElementById("api_body");
+  const apiURL = "https://icanhazdadjoke.com/"
+
+  /* const fetchdata = () => {
+    const response = fetch(apiURL, {
+    headers: {
+      Accept: 'application/json'
+      }
+    })
+    .then((res) => {
+        return res.json();
+    }).then((data) => {
+        //console.log(data.joke);
+        apiBody.innerHTML = data.joke
+    })
+
+  } */
+
+  const fetchdata = async() => {
+    try {
+        const response = await fetch(apiURL,{
+          headers: {
+            Accept: 'application/json'
+           }
+          });
+        const res = await response.json();
+        apiBody.innerHTML = res.joke;
+    } catch (error) {
+        throw new Error(error);
+    }   
+  }
+
+  fetchdata()
+
+  document.getElementById("fetchJoke").addEventListener("click",fetchdata)
+</script>
+</html>
