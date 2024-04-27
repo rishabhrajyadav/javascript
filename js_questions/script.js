@@ -342,13 +342,23 @@ const numberRangeRecursive1 = (a,b,arr = []) => {
 //console.log(numberRangeRecursive1(0,4));
 
 const simplePasswordValidator = (str) => {
-  let lCount = 0;
-  let uCount = 0;
-  let nCOunt = 0;
-  str = str.trim().split("");
-  console.log(str);
-  
+  let lCase = false;
+  let uCase = false;
+  let nCase = false;
 
+  for(let char of str){
+    if(char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90){
+      uCase = true;
+    }else if(char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122){
+      lCase = true;
+    }else if(!isNaN(Number(char))){
+      nCase = true;
+    }
+    if(lCase && uCase && nCase && str.length >= 8){
+      return true;
+    }
+  }
+  return false;
 }
 
-console.log(simplePasswordValidator("raj1"));
+console.log(simplePasswordValidator("rRy16"));
