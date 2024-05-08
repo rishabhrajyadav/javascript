@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat", sans-serif;
+        }
+
+      .menu_tabs{
+        width: 100%;
+        height: 50px;
+        
+      }
+      .menu_tabs .tabs{
+        display: flex;
+        justify-content: center;
+      }
+
+      .menu_tabs .tabs li{
+        list-style: none;
+        margin: 10px 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .images {
+        width: 500px;
+
+      }
+      .images img{
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+</head>
+<body>
+    <section class="menu_tabs">
+        <ul class="tabs">
+            <li data-category="all">All</li>
+            <li data-category="animals">Animals</li>
+            <li data-category="birds">Birds</li>
+            <li data-category="nature">Nature</li>
+        </ul>
+    </section>
+    <section class="menu_images">
+        <div class="images" data-category="birds">
+            <img 
+              src="https://www.pexels.com/photo/photo-of-two-pigeons-1406506/" 
+              alt=""/>
+              <img 
+              src="https://www.pexels.com/photo/black-and-white-eagle-36846/" 
+              alt=""/>
+        </div>
+        <div class="images" data-category="animals">
+            <img 
+              src="https://www.pexels.com/photo/close-up-photography-of-tiger-792381/" 
+              alt=""/>
+              <img 
+              src="https://www.pexels.com/photo/yellow-and-green-coated-lizard-62289/" 
+              alt=""/>
+              <img 
+              src="https://www.pexels.com/photo/five-monkey-huddled-together-outdoor-during-daytime-60023/" 
+              alt=""/>
+        </div>
+        <div class="images" data-category="nature">
+            <img 
+              src="https://www.pexels.com/photo/red-trees-1547813/" 
+              alt=""/>
+              <img 
+              src="https://www.pexels.com/photo/photo-of-stream-during-daytime-3225517/" 
+              alt=""/>
+        </div>
+
+    </section>
+</body>
+<script src="script.js"></script>
+</html>

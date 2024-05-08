@@ -340,7 +340,7 @@ const numberRangeRecursive1 = (a,b,arr = []) => {
 }
 
 //console.log(numberRangeRecursive1(0,4));
-
+/* 
 const simplePasswordValidator = (str) => {
   let lCase = false;
   let uCase = false;
@@ -360,5 +360,15 @@ const simplePasswordValidator = (str) => {
   }
   return false;
 }
+ */
+//console.log(simplePasswordValidator("rRy16"));
 
-console.log(simplePasswordValidator("rRy16"));
+const randomHexColor = () => {
+  let color = "#";
+
+  color += Math.random().toString(16).slice(2,8).padEnd(6,0);
+  console.log(typeof color);
+  return color;
+}
+
+console.log(randomHexColor());
