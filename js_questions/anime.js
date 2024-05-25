@@ -63,7 +63,7 @@ db.animes.findOneAndReplace(
         $addFields : {required_anime : true}
     },
  ])
- 
+
  db.animes.aggregate([
     {
         $match : {
@@ -89,6 +89,37 @@ db.animes.findOneAndReplace(
     {
         $addFields : {required_anime : true}
     },
+ ])
+
+ db.animes.aggregate([
+    {
+        $facet : {
+            maxRatingOnGenre : [
+                {
+                    $group : {
+                        _id : "$genre",
+                        maxRating : {$max : "$ratingOutOfFive"},
+                    }
+                }
+            ],
+            maxMoviesOnGenre : [
+                {
+                    $group : {
+                        _id : "$genre",
+                        maxMovies : {$max : "$movies"},
+                    }
+                }
+            ],
+            maxTotalSeasonsOnGenre : [
+                {
+                    $group : {
+                        _id : "$genre",
+                        maxTotalSeasons : {$max : "$totalSeasons"},
+                    }
+                }
+            ]
+        }
+    }
  ])
       
 
