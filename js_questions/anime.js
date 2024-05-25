@@ -18,6 +18,28 @@ db.animes.findOneAndReplace(
             mainChar : "Saitama"
         },
  );
+
+ db.animes.aggregate([
+    {
+        $match : {
+            movies : {$gt : 1}
+        }
+    } ,
+    {
+      $project : {_id : 0 , name : 1 , mainChar : 1 , genre : 1 }
+    }
+ ])
+
+ db.animes.aggregate([
+    {
+        $match : {
+            movies : {$gt : 1}
+        }
+    } ,
+    {
+        $count : "total_DOcs"
+    }
+ ])
  
  db.animes.aggregate([
     {
@@ -27,10 +49,19 @@ db.animes.findOneAndReplace(
     } , 
     {
         $group : {
-            _id : "$ratingOutOfFive",
+            _id : "$genre",
+            maxRating : {$min : "$ratingOutOfFive"},
             totalRatingsSum : {$sum : "$ratingOutOfFive"}
         }
-    }
+    },
+    {$sort : {maxRating : 1}},
+    {$limit : 2},
+    {
+        $project : { _id : 0}
+    },
+    {
+        $addFields : {required_anime : true}
+    },
  ])
       
 
