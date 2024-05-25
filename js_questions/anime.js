@@ -51,11 +51,38 @@ db.animes.findOneAndReplace(
         $group : {
             _id : "$genre",
             maxRating : {$min : "$ratingOutOfFive"},
-            totalRatingsSum : {$sum : "$ratingOutOfFive"}
+            totalRatingsSum : {$sum : "$ratingOutOfFive"},
         }
     },
     {$sort : {maxRating : 1}},
     {$limit : 2},
+    {
+        $project : { _id : 0}
+    },
+    {
+        $addFields : {required_anime : true}
+    },
+ ])
+ 
+ db.animes.aggregate([
+    {
+        $match : {
+            movies : {$gt : 1}
+        }
+    } , 
+    {
+        $group : {
+            _id : "$genre",
+            maxRating : {$min : "$ratingOutOfFive"},
+            totalRatingsSum : {$sum : "$ratingOutOfFive"},
+            allNames : {$push : "$name"}
+        }
+    },
+    {
+        $unwind : "$allNames"
+    },
+    {$sort : {maxRating : 1}},
+    {$limit : 5},
     {
         $project : { _id : 0}
     },
