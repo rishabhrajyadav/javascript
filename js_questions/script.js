@@ -363,12 +363,49 @@ const simplePasswordValidator = (str) => {
  */
 //console.log(simplePasswordValidator("rRy16"));
 
-const randomHexColor = () => {
+/* const randomHexColor = () => {
   let color = "#";
 
   color += Math.random().toString(16).slice(2,8).padEnd(6,0);
-  console.log(typeof color);
+
   return color;
 }
 
-console.log(randomHexColor());
+console.log(randomHexColor()); */
+
+/* const removeDuplicatess = (arr) => [...new Set(arr)]
+
+console.log(removeDuplicatess([1,2,3,4,3,3,2,4,4,4])); */
+
+/* const isEmptyObject = (obj) => {
+  return Object.keys(obj).length === 0 && obj.constructor === Object
+}
+
+console.log(isEmptyObject({a : 1}))
+console.log(isEmptyObject({})); */
+
+/* const obj = {
+  name : "Rish",
+  age: 27,
+  city: "Jabalpur"
+}
+
+const entries = Object.entries(obj);
+
+console.log(entries);
+console.log(entries.flat());
+
+const newObj = Object.fromEntries(entries);
+
+console.log(newObj); */
+
+const calculateDaysBetweenDates = (d1,d2) => {
+  let date1 = new Date(d1);
+  let date2 = new Date(d2);
+
+  let diff = Math.abs(date2 - date1);
+
+  return diff/ (24*60*60*1000);
+}
+
+console.log(calculateDaysBetweenDates("2024-01-05","2024-01-31"));
