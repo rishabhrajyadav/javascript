@@ -408,4 +408,8 @@ const calculateDaysBetweenDates = (d1,d2) => {
   return diff/ (24*60*60*1000);
 }
 
-console.log(calculateDaysBetweenDates("2024-01-05","2024-01-31"));
+//console.log(calculateDaysBetweenDates("2024-01-05","2024-01-31"));
+
+
+
+
