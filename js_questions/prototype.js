@@ -85,5 +85,26 @@ const bird = {
 
 //bird.__proto__ = animal
 Object.setPrototypeOf(bird,animal)
-console.log(bird);
-console.log(Object.getPrototypeOf(bird))
+/* console.log(bird);
+console.log(Object.getPrototypeOf(bird)) */
+
+//Inheritance in javascript
+function Animal(){
+    this.legs = 4
+}
+
+function Dog(){
+    Animal.call(this);
+    this.showLegs = function(){
+        console.log(this.legs)
+    }
+}
+
+Dog.prototype = Animal
+Dog.prototype.constructor = Dog;
+
+const myPet = new Dog();
+myPet.showLegs()
+console.log(myPet instanceof Dog)
+console.log(Animal.constructor = Dog.constructor)
+
