@@ -29,4 +29,19 @@ function sum(n1){
     return a + b + c;
   }
 
-  console.log(curry(sum)(1)(1000)(999))
+  //console.log(curry(sum)(1)(1000)(999))
+
+//IIFE
+-function test(){
+    var personName = 'asdf'
+    console.log(personName);
+}();
++function test(){
+    var personName = 'asdf'
+    console.log(personName);
+}();
+(function test(){
+    var personName = 'asdf'
+    console.log(personName);
+})();
+
