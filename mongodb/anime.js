@@ -22,6 +22,32 @@ db.animes.findOneAndReplace(
  db.animes.aggregate([
     {
         $match : {
+            totalSeasons : {$lt : 10}
+        }
+    }, 
+    {
+        $group : {
+            _id: "$genre",
+            minRating : {$min : "$ratingOutOfFive"},
+            allNames : {$push : "$mainChar"}
+        }
+    },
+    {
+        $project : {_id : 0}
+    },
+    {
+        $unwind : "$allNames"
+    },
+    {
+        $addFields: {
+            required_anime : true
+        }
+    }
+ ])
+
+ db.animes.aggregate([
+    {
+        $match : {
             movies : {$gt : 1}
         }
     } ,
