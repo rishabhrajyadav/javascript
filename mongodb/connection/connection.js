@@ -92,6 +92,93 @@ const insertPokemons = async() => {
   }
 }
 
-insertPokemons()
+//insertPokemons()
 
+const agp1 = async () => {
+    try {
+        const result = await Pokemon.aggregate([
+            {
+                $match : { 
+                    powerOutOfFive : {$gt : 4}
+                }
+            },
+        ])
+        console.log(result);
+    } catch (error) {
+        console.log(`${error} : Aggregation Failed`);
+    }
+}
+const agp2 = async () => {
+    try {
+        const result = await Pokemon.aggregate([
+            {
+                $group : {
+                    _id : "$evolutionStage",
+                    count : {$sum : 1}
+                }
+            },
+            {
+                $project :{
+                    _id : 0,
+                }
+            }
+        ])
+        console.log(result);
+    } catch (error) {
+        console.log(`${error} : Aggregation Failed`);
+    }
+}
+
+const agp3 = async() => {
+  try {
+    const result = await Pokemon.aggregate([
+        {
+            $facet :{
+                groupByType : [
+                    {
+                       $group : {
+                            _id : "$pType",
+                            averagePower : {$avg : "$powerOutOfFive"}
+                        }
+                    }
+                ],
+
+                filterByPower : [
+                    {
+                        $match : {
+                            powerOutOfFive : {$gt : 3.5}
+                        }
+                    }
+                ],
+                sortByName : [
+                    {
+                        $sort : {name : 1}
+                    }
+                ]
+            }
+        }
+    ])
+    console.log(result);
+  } catch (error) {
+    console.log(`${error} : Aggregation failed`);
+  }
+}
+
+const updateP = async() => {
+    try {
+        const res = await Pokemon.updateOne(
+        { name: "Infernape" },
+        { $set: { pType: "Fire" } }
+        )
+        console.log(res);
+    } catch (error) {
+        console.log(`${error} Updated One`);
+    }
+}
+
+updateP()
+
+//agp1()
+//agp2()
+//agp3()
 
